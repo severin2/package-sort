@@ -45,5 +45,57 @@ class TestPackageSorter(unittest.TestCase):
         with self.assertRaises(TypeError):
             sort("10", 10, 10, 5)
 
+    def test_invalid_width(self):
+        # Invalid input: Non-numeric width
+        with self.assertRaises(TypeError):
+            sort("invalid", 10, 10, 5)
+
+        # Invalid input: Negative width
+        with self.assertRaises(ValueError):
+            sort(-10, 10, 10, 5)
+
+        # Invalid input: Zero width
+        with self.assertRaises(ValueError):
+            sort(0, 10, 10, 5)
+
+    def test_invalid_height(self):
+        # Invalid input: Non-numeric height
+        with self.assertRaises(TypeError):
+            sort(10, "invalid", 10, 5)
+
+        # Invalid input: Negative height
+        with self.assertRaises(ValueError):
+            sort(10, -10, 10, 5)
+
+        # Invalid input: Zero height
+        with self.assertRaises(ValueError):
+            sort(10, 0, 10, 5)
+
+    def test_invalid_length(self):
+        # Invalid input: Non-numeric length
+        with self.assertRaises(TypeError):
+            sort(10, 10, "invalid", 5)
+
+        # Invalid input: Negative length
+        with self.assertRaises(ValueError):
+            sort(10, 10, -10, 5)
+
+        # Invalid input: Zero length
+        with self.assertRaises(ValueError):
+            sort(10, 10, 0, 5)
+
+    def test_invalid_mass(self):
+        # Invalid input: Non-numeric mass
+        with self.assertRaises(TypeError):
+            sort(10, 10, 10, "invalid")
+
+        # Invalid input: Negative mass
+        with self.assertRaises(ValueError):
+            sort(10, 10, 10, -5)
+
+        # Invalid input: Zero mass
+        with self.assertRaises(ValueError):
+            sort(10, 10, 10, 0)
+
 if __name__ == "__main__":
     unittest.main()
